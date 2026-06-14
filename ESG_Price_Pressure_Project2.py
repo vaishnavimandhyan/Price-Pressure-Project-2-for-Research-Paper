@@ -1,6 +1,6 @@
-# ==========================================
+
 # STEP 1: CONSTRUCT THE DATASET (THE BIG FOUR)
-# ==========================================
+
 # Data points represent estimated industry averages for ESG performance,
 # revenue size (in billions USD), and baseline cost of capital.
 
@@ -31,13 +31,13 @@ big_four = [
     }
 ]
 
-# ==========================================
+
 # STEP 2: QUANTIFY ESG PRICE PRESSURE
-# ==========================================
+
 # Academic Theory: Higher ESG scores apply downward pressure on borrowing costs,
 # artificially inflating the "implied valuation" of the firm's internal assets.
 
-print("--- QUANTIFYING ESG PRICE PRESSURE AND DISTORTIONS ---")
+print("QUANTIFYING ESG PRICE PRESSURE AND DISTORTIONS")
 
 for firm in big_four:
     # 1. Calculate Interest Rate Discount (Price Pressure)
@@ -57,9 +57,9 @@ for firm in big_four:
     
     firm["Valuation_Distortion_Pct"] = ((distorted_value - fundamental_value) / fundamental_value) * 100
 
-# ==========================================
+
 # STEP 3: OUTPUT COMPANY ANALYSIS & RESULTS
-# ==========================================
+
 for firm in big_four:
     print(f"\nFirm: {firm['Firm']}")
     print(f"  * ESG Score: {firm['ESG_Score']}/100")
@@ -67,10 +67,10 @@ for firm in big_four:
     print(f"  * Adjusted Cost of Capital: {firm['Actual_Cost_of_Capital']*100:.2f}%")
     print(f"  * Implied Price Pressure (Valuation Distortion): +{firm['Valuation_Distortion_Pct']:.2f}%")
 
-# ==========================================
+
 # STEP 4: RISK-ADJUSTED PERFORMANCE ANALYSIS
-# ==========================================
-print("\n--- SYSTEMIC PORTFOLIO RISK ANALYSIS ---")
+
+print("SYSTEMIC PORTFOLIO RISK ANALYSIS")
 
 # Let's see how much "artificial premium" is baked into the Big Four sector as a whole
 total_distortion = sum(f["Valuation_Distortion_Pct"] for f in big_four)
